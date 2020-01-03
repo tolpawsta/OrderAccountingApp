@@ -12,15 +12,14 @@ namespace ManagerOrdersApp.BL.Impl
     class FileWatcher : IFileWatcher
     {
         private string _puthDirectory;
-
-        public FileWatcher():base()
+        private FileSystemWatcher watcher;
+        public FileWatcher():this(ConfigurationManager.AppSettings.Get("Puth"))
         {
 
         }
 
         public FileWatcher(string puthDirectory)
         {
-            var puthDirectory=ConfigurationManager
             _puthDirectory = puthDirectory;
         }
 

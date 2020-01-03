@@ -23,9 +23,14 @@ namespace ManageOrdersApp.Repositories
             _products.Add(product);
         }
 
-        public void Delete(Product product)
+        public void Delete(int id)
         {
-            _products.Remove(product);
+            Product product = _products.Find(id);
+            if (product!=null)
+            {
+                _products.Remove(product);
+            }
+            
         }
 
         public IQueryable<Product> Find(Func<Product, bool> predicate)
