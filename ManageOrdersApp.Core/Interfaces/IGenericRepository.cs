@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace OrderAccountingCore.Interfaces
+namespace ManageOrdersApp.Core.Interfaces
 {
-   public interface IGenericRepository<TEntity>
+    public interface IGenericRepository<TEntity>
     {
         IQueryable<TEntity> GetAll();
         TEntity GetById(int id);

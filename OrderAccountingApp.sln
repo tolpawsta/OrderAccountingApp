@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAccountingAppDemo", "OrderAccountingApp\OrderAccountingAppDemo.csproj", "{6BD49C49-8DBE-44DE-9243-B7DD84D9724B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageOrdersDemo", "OrderAccountingApp\ManageOrdersDemo.csproj", "{6BD49C49-8DBE-44DE-9243-B7DD84D9724B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{B9ECE637-DA22-43B7-A766-FC09B24A3335}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageOrdersApp.DAL", "ManageOrdersApp\ManageOrdersApp.DAL.csproj", "{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAccountingCore", "OrderAccountingCore\OrderAccountingCore.csproj", "{FED78977-87C5-433A-8CD3-256FADF7C438}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageOrdersApp.Core", "ManageOrdersApp.Core\ManageOrdersApp.Core.csproj", "{20C7D813-645F-454A-8394-95B262FC27C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerOrdersApp.BLL", "ManagerOrdersApp.BL\ManagerOrdersApp.BLL.csproj", "{15C21C09-0177-40D4-A43B-1057A25445EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{6BD49C49-8DBE-44DE-9243-B7DD84D9724B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD49C49-8DBE-44DE-9243-B7DD84D9724B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD49C49-8DBE-44DE-9243-B7DD84D9724B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9ECE637-DA22-43B7-A766-FC09B24A3335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9ECE637-DA22-43B7-A766-FC09B24A3335}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9ECE637-DA22-43B7-A766-FC09B24A3335}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9ECE637-DA22-43B7-A766-FC09B24A3335}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FED78977-87C5-433A-8CD3-256FADF7C438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FED78977-87C5-433A-8CD3-256FADF7C438}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FED78977-87C5-433A-8CD3-256FADF7C438}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FED78977-87C5-433A-8CD3-256FADF7C438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C7D813-645F-454A-8394-95B262FC27C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C7D813-645F-454A-8394-95B262FC27C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C7D813-645F-454A-8394-95B262FC27C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C7D813-645F-454A-8394-95B262FC27C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C21C09-0177-40D4-A43B-1057A25445EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C21C09-0177-40D4-A43B-1057A25445EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C21C09-0177-40D4-A43B-1057A25445EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C21C09-0177-40D4-A43B-1057A25445EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

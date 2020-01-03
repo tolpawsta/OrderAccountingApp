@@ -1,10 +1,8 @@
-﻿using OrderAccountingCore.Interfaces;
+﻿using ManageOrdersApp.Core.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace OrderAccountingCore.Impl
+namespace ManageOrdersApp.Core.Impl
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
