@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.Core.Interfaces
 {
-   public interface IFileWatcher
+    public interface ILogger
     {
-        void OnChanged(object sender, FileSystemEventArgs e);
-        void OnRenamed(object sender, RenamedEventArgs e);
-        void Stop();
         void Start();
+        void Stop();
+        void Log(string message);
+        void LogOnChanged(object sender, FileSystemEventArgs e);
+        void LogOnRenamed(object sender, RenamedEventArgs e);
+
     }
 }

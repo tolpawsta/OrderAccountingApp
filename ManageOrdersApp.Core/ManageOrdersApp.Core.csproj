@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurator.cs" />
+    <Compile Include="Exeptions\LoggerException.cs" />
     <Compile Include="Impl\GenericRepository.cs" />
     <Compile Include="Interfaces\IDbContext.cs" />
-    <Compile Include="Interfaces\IFileWatcher.cs" />
+    <Compile Include="Interfaces\IDependencyManager.cs" />
+    <Compile Include="Interfaces\IWatcher.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

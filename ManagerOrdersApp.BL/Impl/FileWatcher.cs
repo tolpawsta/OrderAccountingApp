@@ -1,4 +1,5 @@
-﻿using ManageOrdersApp.Core.Interfaces;
+﻿using ManageOrdersApp.Core.Exeptions;
+using ManageOrdersApp.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManagerOrdersApp.BL.Impl
+namespace ManagerOrdersApp.BLL.Impl
 {
-    class FileWatcher : IFileWatcher
+    class FileWatcher : IWatcher
     {
         private string _puthDirectory;
-        private FileSystemWatcher watcher;
-        public FileWatcher():this(ConfigurationManager.AppSettings.Get("Puth"))
+        private FileSystemWatcher _watcher;
+        private ICollection<ILogger> _loggers;
+        public FileWatcher() : this(ConfigurationManager.AppSettings.Get("PathFolder"))
         {
 
         }
@@ -21,26 +23,39 @@ namespace ManagerOrdersApp.BL.Impl
         public FileWatcher(string puthDirectory)
         {
             _puthDirectory = puthDirectory;
+            _watcher = new FileSystemWatcher();
+            _loggers = new HashSet<ILogger>();
         }
 
-        public void OnChanged(object sender, FileSystemEventArgs e)
+        public void AddLogger(ILogger logger)
         {
-            throw new NotImplementedException();
-        }
-
-        public void OnRenamed(object sender, RenamedEventArgs e)
-        {
-            throw new NotImplementedException();
+            if (_loggers.Contains(logger))
+            {
+                throw new LoggerException("Such logger exists");
+            }
+            _watcher.Created += logger.LogOnChanged;
+            _watcher.Changed += logger.LogOnChanged;
+            _watcher.Deleted += logger.LogOnChanged;
+            _watcher.Renamed += logger.LogOnRenamed;
+            _loggers.Add(logger);
         }
 
         public void Start()
         {
-            throw new NotImplementedException();
+            _watcher.Path = _puthDirectory;
+            _watcher.Filter = "*.csv";
+            _watcher.NotifyFilter = NotifyFilters.LastWrite |
+           NotifyFilters.LastAccess |
+           NotifyFilters.FileName |
+           NotifyFilters.DirectoryName;
+            _watcher.IncludeSubdirectories = true;
+            _watcher.EnableRaisingEvents = true;
+
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            _watcher.EnableRaisingEvents = false;
         }
     }
 }

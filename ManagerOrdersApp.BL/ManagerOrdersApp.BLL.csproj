@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -42,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\CsvFileReader.cs" />
+    <Compile Include="Impl\DependencyManager.cs" />
     <Compile Include="Impl\FileWatcher.cs" />
+    <Compile Include="Impl\Loggers\ConsoleLogger.cs" />
+    <Compile Include="Impl\Loggers\FileLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
