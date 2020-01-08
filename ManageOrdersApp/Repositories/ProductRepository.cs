@@ -5,9 +5,9 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 
-namespace ManageOrdersApp.Repositories
+namespace ManageOrdersApp.DAL.Repositories
 {
-    public class ProductRepository : IGenericRepository<Product>
+    public class ProductRepository : IRepository<Product>
     {
         private ManagerContext _context;
         private DbSet<Product> _products;

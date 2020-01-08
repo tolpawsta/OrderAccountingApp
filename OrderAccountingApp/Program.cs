@@ -18,6 +18,7 @@ namespace OrderAccountingAppDemo
             ILogger consoleLogger = manager.CreateLogger(new ConsoleLogger());
             IWatcher watcher = manager.CreateWatcher();
             watcher.AddLogger(consoleLogger);
+            consoleLogger.Start();
             watcher.Start();
 
         }

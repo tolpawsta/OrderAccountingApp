@@ -12,7 +12,7 @@ namespace ManageOrdersApp.Model
     {
         
 
-        protected ManagerContext():base("name=ManagerConnection")
+        public ManagerContext():base("name=ManagerConnection")
         {
         }
        public virtual DbSet<Customer> Castomers { get; set; }

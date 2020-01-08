@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ManageOrdersApp.Core.Interfaces
 {
-    public interface IGenericRepository<TEntity>
+    public interface IRepository<TEntity> where TEntity:class
     {
         IQueryable<TEntity> GetAll();
         TEntity GetById(int id);
