@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.Impl
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork :IUnitOfWork, IDisposable
     {
         private ManagerContext _context;
         private ProductRepository productRepository;
@@ -18,7 +18,7 @@ namespace ManageOrdersApp.Impl
         private OrderRepository orderRepository;
         private bool _disposed = false;
 
-        public UnitOfWork(string connectionString)
+        public UnitOfWork()
         {
             _context = new ManagerContext();
         }

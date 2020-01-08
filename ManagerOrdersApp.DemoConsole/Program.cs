@@ -17,7 +17,7 @@ namespace OrderAccountingAppDemo
             var manager = Configurator.CreateManager(new DependencyManager());
             ILogger consoleLogger = manager.CreateLogger(new ConsoleLogger());
             IWatcher watcher = manager.CreateWatcher();
-            watcher.AddLogger(consoleLogger);
+            watcher.OnLog += s => Console.WriteLine(s);
             consoleLogger.Start();
             watcher.Start();
 

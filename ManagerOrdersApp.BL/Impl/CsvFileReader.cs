@@ -8,5 +8,11 @@ namespace ManagerOrdersApp.BL.Impl
 {
     public class CsvFileReader
     {
+        private string _pathFile;
+       
+        public CsvFileReader(string pathFile)
+        {
+            _pathFile = pathFile;
+        }
     }
 }

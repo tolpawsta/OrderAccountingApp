@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace ManagerOrdersApp.BLL.Impl
 {
-    class FileWatcher : IWatcher
+    class FileWatcher : IWatcher, ILoggable
     {
         private string _puthDirectory;
         private FileSystemWatcher _watcher;
         private ICollection<ILogger> _loggers;
+        public event Action<string> LogEvent;
+        public event Action<string> Created;
         public FileWatcher() : this(ConfigurationManager.AppSettings.Get("PathFolder"))
         {
 
@@ -27,21 +29,15 @@ namespace ManagerOrdersApp.BLL.Impl
             _loggers = new HashSet<ILogger>();
         }
 
-        public void AddLogger(ILogger logger)
-        {
-            if (_loggers.Contains(logger))
-            {
-                throw new LoggerException("Such logger exists");
-            }
-            _watcher.Created += logger.LogOnChanged;
-            _watcher.Changed += logger.LogOnChanged;
-            _watcher.Deleted += logger.LogOnChanged;
-            _watcher.Renamed += logger.LogOnRenamed;
-            _loggers.Add(logger);
-        }
+
 
         public void Start()
         {
+            if (_watcher==null)
+            {
+                _watcher = new FileSystemWatcher();
+            }
+            SubsribeOnEvents(_watcher);
             _watcher.Path = _puthDirectory;
             _watcher.Filter = "*.csv";
             _watcher.NotifyFilter = NotifyFilters.LastWrite |
@@ -55,7 +51,30 @@ namespace ManagerOrdersApp.BLL.Impl
 
         public void Stop()
         {
-            _watcher.EnableRaisingEvents = false;
+            if (_watcher!=null)
+            {
+                UnsubscribeOnEvents(_watcher);
+                _watcher.EnableRaisingEvents = false;
+                _watcher.Dispose();
+            }
+           
+
+        }
+        private void SubsribeOnEvents(FileSystemWatcher watcher)
+        {
+            watcher.Created += (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Changed += (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Deleted += (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Renamed += (o, e) => LogEvent?.Invoke($"File: {e.OldName} renamed to {e.Name}");
+            watcher.Deleted += (o, e) => Created?.Invoke(e.FullPath);
+        }
+        private void UnsubscribeOnEvents(FileSystemWatcher watcher)
+        {
+            watcher.Created -= (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Changed -= (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Deleted -= (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
+            watcher.Renamed -= (o, e) => LogEvent?.Invoke($"File: {e.OldName} renamed to {e.Name}");
+            watcher.Deleted -= (o, e) => Created?.Invoke(e.FullPath);
         }
     }
 }

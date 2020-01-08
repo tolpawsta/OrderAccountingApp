@@ -55,8 +55,10 @@
   <ItemGroup>
     <Compile Include="EF\TestContext.cs" />
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Report.cs" />
     <Compile Include="Impl\UnitOfWork.cs" />
     <Compile Include="Model\ManagerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

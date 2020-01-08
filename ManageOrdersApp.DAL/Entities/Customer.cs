@@ -9,11 +9,6 @@ namespace ManageOrdersApp.DAL.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName => new StringBuilder()
-            .Append(FirstName)
-            .Append(" ")
-            .Append(LastName).ToString();
-
         public virtual ICollection<Order> Orders { get; set; }
         public Customer()
         {
