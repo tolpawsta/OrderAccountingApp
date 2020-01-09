@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Configurator.cs" />
     <Compile Include="Exeptions\LoggerException.cs" />
+    <Compile Include="Impl\Entity.cs" />
     <Compile Include="Interfaces\IDependencyManager.cs" />
     <Compile Include="Interfaces\IFileReader.cs" />
     <Compile Include="Interfaces\ILoggable.cs" />
@@ -55,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Impl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

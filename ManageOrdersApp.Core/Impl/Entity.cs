@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.Core.Impl
 {
-    class Entity
+    public abstract class Entity
     {
+        public int Id { get; set; }
     }
 }
