@@ -49,6 +49,11 @@
     <Compile Include="Impl\Loggers\ConsoleLogger.cs" />
     <Compile Include="Impl\Loggers\FileLogger.cs" />
     <Compile Include="Impl\WatcherListener.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Manager.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaderService.cs" />
   </ItemGroup>

@@ -14,6 +14,7 @@ namespace ManageOrdersApp.Model
 
         public ManagerContext():base("name=ManagerConnection")
         {
+            Database.CreateIfNotExists();
         }
        public virtual DbSet<Customer> Castomers { get; set; }
       public virtual DbSet<Order> Orders { get; set; }
