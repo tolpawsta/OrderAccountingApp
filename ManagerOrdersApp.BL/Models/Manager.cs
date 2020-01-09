@@ -9,7 +9,7 @@ namespace ManageOrdersApp.BLL.Models
     public class Manager
     {
         public int Id { get; set; }
-        public int LastName { get; set; }
+        public string LastName { get; set; }
         public int RecordId { get; set; }
         public virtual ICollection<Report> Records { get; set; }
         public Manager()

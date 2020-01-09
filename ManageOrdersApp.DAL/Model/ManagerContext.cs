@@ -1,27 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ManageOrdersApp.DAL.Entities;
 using System.Data.Entity;
-using ManageOrdersApp.DAL.Entities;
-using ManageOrdersApp.Core.Interfaces;
-using ManageOrdersApp.Core.Impl;
 
 namespace ManageOrdersApp.Model
 {
-    public partial class ManagerContext : DbContext,IDbContext<Entity> 
+    public partial class ManagerContext : DbContext
     {
-        
 
-        public ManagerContext():base("name=ManagerConnection")
+
+        public ManagerContext() : base("name=ManagerConnection")
         {
             Database.CreateIfNotExists();
         }
-       
-       public virtual DbSet<Customer> Castomers { get; set; }
-      public virtual DbSet<Order> Orders { get; set; }
-       public virtual DbSet<Product> Products { get; set; }
-        public DbSet<Entity> Entities { get ; set; }
+
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Customer)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Amount)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+        }
     }
 }

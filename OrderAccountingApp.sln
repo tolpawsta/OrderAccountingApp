@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerOrdersApp.DemoConsol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageOrdersApp.DAL", "ManageOrdersApp.DAL\ManageOrdersApp.DAL.csproj", "{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerOrdersApp.DemoService", "ManagerOrdersApp.DemoService\ManagerOrdersApp.DemoService.csproj", "{AE99CAAB-E627-4505-975E-1B79501261AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC3F9F0-1DA8-4462-9CD0-82A20920985F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE99CAAB-E627-4505-975E-1B79501261AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE99CAAB-E627-4505-975E-1B79501261AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE99CAAB-E627-4505-975E-1B79501261AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE99CAAB-E627-4505-975E-1B79501261AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

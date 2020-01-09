@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace ManageOrdersApp.Core.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity:Entity
+    public interface IRepository<TEntity> where TEntity:class
     {
-        IQueryable<TEntity> All { get; set; }
+        IQueryable<TEntity> All { get;}
         TEntity GetById(int id);
         IQueryable<TEntity> Find(Func<TEntity, bool> predicate);
         void Delete(int id);
@@ -16,5 +16,6 @@ namespace ManageOrdersApp.Core.Interfaces
         void Create(IEnumerable<TEntity> entities);
         void Update(TEntity entity);
         void Update(IEnumerable<TEntity> entities);
+        void SaveChanges();
     }
 }

@@ -4,6 +4,7 @@ namespace ManageOrdersApp.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using ManageOrdersApp.DAL.Entities;
 
     public partial class TestContext : DbContext
     {
