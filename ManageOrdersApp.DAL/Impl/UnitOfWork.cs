@@ -2,6 +2,7 @@
 using ManageOrdersApp.DAL.Entities;
 using ManageOrdersApp.DAL.Repositories;
 using ManageOrdersApp.Model;
+using ManageOrdersApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,7 @@ namespace ManageOrdersApp.Impl
     public class UnitOfWork :IUnitOfWork, IDisposable
     {
         private ManagerContext _context;
-        private ProductRepository productRepository;
-        private CustomerRepository customerRepository;
-        private OrderRepository orderRepository;
+       public Repository<>
         private bool _disposed = false;
 
         public UnitOfWork()
