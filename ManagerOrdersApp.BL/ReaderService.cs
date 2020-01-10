@@ -1,19 +1,50 @@
-﻿using ManageOrdersApp.Core.Interfaces;
+﻿using AutoMapper;
+using ManageOrdersApp.BLL.Models;
+using ManageOrdersApp.Core.Interfaces;
+using ManageOrdersApp.DAL.Entities;
+using ManageOrdersApp.DAL.Model;
+using ManageOrdersApp.EF;
+using ManageOrdersApp.Repositories;
 using ManagerOrdersApp.BL.Impl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ManagerOrdersApp.BLL.MappingProfile;
+using ManagerOrdersApp.BLL.Services;
+using System.IO;
 
 namespace ManagerOrdersApp.BLL
 {
     public class ReaderService:IReaderService
     {
         private IFileReader _reader;
-        private IUnitOfWork _unitOfWork;
+        private MapperConfiguration config;
+        private IMapper _mapper;
+
+        public ReaderService()
+        {
+            config = new MapperConfiguration(cfg => cfg.AddProfile(new ManagerMappingProfile()));
+            _mapper = new Mapper(config);
+        }
+
         public void Begin(string pathFile)
         {
+            using (var reader =new StreamReader(pathFile))
+            {
+                IService<ProductBL> productService = new ProductService(new Repository<Product>(new TestContext()),_mapper);
+                //IService<OrderBL> orderService = new ProductService(new Repository<Order>(new ManagerContext()),_mapper);
+                //IService<ManagerBL> managerService = new ProductService(new Repository<Manager>(new ManagerContext()),_mapper);
+                //IService<ReportBL> reportService = new ProductService(new Repository<Report>(new ManagerContext()),_mapper);
+                //IService<CustomerBL> customService = new ProductService(new Repository<Customer>(new ManagerContext()),_mapper);
+                CsvFileReader csvFileReader = new CsvFileReader(pathFile);
+                csvFileReader.Dilimiter = ';';
+                
+                string record = string.Empty;
+                while ((record=reader.ReadLine())!=null)
+                {
+                    csvFileReader.GetObject(record);
+                   ProductBL product=csvFileReader.GetProduct();
+                    productService.Create(product);
+                }
+            }
+            
 
         }
     }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.Core.Interfaces
 {
-    public interface IDependencyManager
+    public interface IWatcherListener
     {
-        ILogger CreateLogger(ILogger logger);
-        IWatcher CreateWatcher(string pathFile);
+        void OnCreated(string pathFile);
     }
 }

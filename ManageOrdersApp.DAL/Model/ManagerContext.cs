@@ -1,15 +1,15 @@
 ﻿using ManageOrdersApp.DAL.Entities;
 using System.Data.Entity;
 
-namespace ManageOrdersApp.Model
+namespace ManageOrdersApp.DAL.Model
 {
     public partial class ManagerContext : DbContext
     {
 
 
-        public ManagerContext() : base("name=ManagerConnection")
+        public ManagerContext() : base("name=ManagerContext")
         {
-            Database.CreateIfNotExists();
+           
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
@@ -20,7 +20,7 @@ namespace ManageOrdersApp.Model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
-                .HasMany(e => e.Order)
+                .HasMany(e => e.Orders)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
@@ -29,7 +29,7 @@ namespace ManageOrdersApp.Model
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
-                .HasMany(e => e.Order)
+                .HasMany(e => e.Orders)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
         }

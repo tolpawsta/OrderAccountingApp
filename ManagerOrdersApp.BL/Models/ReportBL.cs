@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.BLL.Models
 {
-    public class Report
+    public class ReportBL
     {
         public int Id { get; set; }
         public int ManagerId { get; set; }
-        public Manager Manager { get; set; }
+        public ManagerBL Manager { get; set; }
         public DateTime OrderDateTime { get; set; }
     }
 }

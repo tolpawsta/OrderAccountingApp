@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -48,22 +51,30 @@
     <Compile Include="Impl\FileWatcher.cs" />
     <Compile Include="Impl\Loggers\FileLogger.cs" />
     <Compile Include="Impl\WatcherListener.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Manager.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Report.cs" />
+    <Compile Include="MappingProfile\ManagerMappingProfile.cs" />
+    <Compile Include="Models\CustomerBL.cs" />
+    <Compile Include="Models\ManagerBL.cs" />
+    <Compile Include="Models\OrderBL.cs" />
+    <Compile Include="Models\ProductBL.cs" />
+    <Compile Include="Models\ReportBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaderService.cs" />
+    <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ManageOrdersApp.Core\ManageOrdersApp.Core.csproj">
       <Project>{20c7d813-645f-454a-8394-95b262fc27c3}</Project>
       <Name>ManageOrdersApp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ManageOrdersApp.DAL\ManageOrdersApp.DAL.csproj">
+      <Project>{1fc3f9f0-1da8-4462-9cd0-82a20920985f}</Project>
+      <Name>ManageOrdersApp.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

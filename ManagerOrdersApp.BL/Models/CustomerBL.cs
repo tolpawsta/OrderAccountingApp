@@ -4,15 +4,15 @@ using System.Text;
 
 namespace ManageOrdersApp.BLL.Models
 {
-    public partial class Customer
+    public partial class CustomerBL
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public Customer()
+        public virtual ICollection<OrderBL> Orders { get; set; }
+        public CustomerBL()
         {
-            Orders = new HashSet<Order>();
+            Orders = new HashSet<OrderBL>();
         }
         
 

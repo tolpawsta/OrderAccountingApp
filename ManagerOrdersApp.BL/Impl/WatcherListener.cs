@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ManagerOrdersApp.BL.Impl
 {
-    public class WatcherListener
+    public class WatcherListener:IWatcherListener
     {
         private IReaderService _readerService;
 
@@ -18,6 +19,7 @@ namespace ManagerOrdersApp.BL.Impl
         }
         public void OnCreated(string pathFile)
         {
+            Thread.Sleep(1000);
             Task.Factory.StartNew(
                 () => _readerService.Begin(pathFile)
                 );

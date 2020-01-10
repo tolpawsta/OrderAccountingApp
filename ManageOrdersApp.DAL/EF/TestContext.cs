@@ -20,7 +20,7 @@ namespace ManageOrdersApp.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
-                .HasMany(e => e.Order)
+                .HasMany(e => e.Orders)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
 
@@ -29,7 +29,7 @@ namespace ManageOrdersApp.EF
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
-                .HasMany(e => e.Order)
+                .HasMany(e => e.Orders)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
         }

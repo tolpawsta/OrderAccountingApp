@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ManageOrdersApp.BLL.Models
 {
-    public class Manager
+    public class ManagerBL
     {
         public int Id { get; set; }
         public string LastName { get; set; }
         public int RecordId { get; set; }
-        public virtual ICollection<Report> Records { get; set; }
-        public Manager()
+        public virtual ICollection<ReportBL> Records { get; set; }
+        public ManagerBL()
         {
-            Records = new HashSet<Report>();
+            Records = new HashSet<ReportBL>();
         }
     }
 }

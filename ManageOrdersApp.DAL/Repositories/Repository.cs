@@ -1,22 +1,20 @@
-﻿using ManageOrdersApp.Core.Impl;
-using ManageOrdersApp.Core.Interfaces;
-using ManageOrdersApp.Model;
+﻿using ManageOrdersApp.Core.Interfaces;
+using ManageOrdersApp.DAL.Model;
+using ManageOrdersApp.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManageOrdersApp.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly ManagerContext _context;
+        private readonly TestContext _context;
         private DbSet<TEntity> _entities;
         private object _locker = new object();
 
-        public Repository(ManagerContext context)
+        public Repository(TestContext context)
         {
             _context = context;
         }

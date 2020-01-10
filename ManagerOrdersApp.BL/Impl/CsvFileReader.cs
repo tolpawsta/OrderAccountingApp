@@ -23,7 +23,7 @@ namespace ManagerOrdersApp.BL.Impl
             _pathFile = pathFile;
         }
         
-        public Manager GetManager()
+        public ManagerBL GetManager()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace ManagerOrdersApp.BL.Impl
                 {
                     throw new Exception("Invalid file name");
                 }
-                Manager manager = new Manager();
+                ManagerBL manager = new ManagerBL();
                 manager.LastName = GetManagerLastName(managerDataFromFileName);
                 return manager;
 
@@ -54,10 +54,10 @@ namespace ManagerOrdersApp.BL.Impl
             }
            _orderValues=sourceLine.Split(new char[] { Dilimiter },StringSplitOptions.RemoveEmptyEntries);
         }
-        public Product GetProduct()
+        public ProductBL GetProduct()
         {
 
-            return new Product() { Name = _orderValues[_indexProduct]?.Trim()};
+            return new ProductBL() { Name = _orderValues[_indexProduct]?.Trim()};
         }
 
         private string GetFileName(string pathFile)

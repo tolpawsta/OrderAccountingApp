@@ -1,10 +1,4 @@
 ﻿using ManageOrdersApp.Core.Interfaces;
-using ManagerOrdersApp.Bll.Impl.Loggers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagerOrdersApp.BLL.Impl
 {
@@ -15,9 +9,9 @@ namespace ManagerOrdersApp.BLL.Impl
             return logger;
         }
 
-        public IWatcher CreateWatcher()
+        public IWatcher CreateWatcher(string pathFile)
         {
-            return new FileWatcher();
+            return new FileWatcher(pathFile);
         }
     }
 }

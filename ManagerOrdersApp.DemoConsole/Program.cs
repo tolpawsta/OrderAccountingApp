@@ -1,12 +1,11 @@
-﻿using ManageOrdersApp.Core;
+﻿using ManageOrdersApp.BLL.Models;
+using ManageOrdersApp.Core;
 using ManageOrdersApp.Core.Interfaces;
-using ManagerOrdersApp.Bll.Impl.Loggers;
+using ManagerOrdersApp.BL.Impl;
+using ManagerOrdersApp.BLL;
 using ManagerOrdersApp.BLL.Impl;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace OrderAccountingAppDemo
 {
@@ -15,12 +14,15 @@ namespace OrderAccountingAppDemo
         static void Main(string[] args)
         {
             var manager = Configurator.CreateManager(new DependencyManager());
-            ILogger consoleLogger = manager.CreateLogger(new ConsoleLogger());
-            IWatcher watcher = manager.CreateWatcher();
-            watcher.OnLog += s => Console.WriteLine(s);
-            consoleLogger.Start();
+            string pathFile = ConfigurationManager.AppSettings.Get("PathWatcherFolder");
+            IWatcher watcher = manager.CreateWatcher(pathFile);
+            watcher.LogEvent += s => Console.WriteLine(s);
             watcher.Start();
-
+            IReaderService readerService = new ReaderService();
+            IWatcherListener listener = new WatcherListener(readerService);
+            watcher.Created +=m=> listener.OnCreated(m);
+            Console.ReadKey();
+            
         }
     }
 }

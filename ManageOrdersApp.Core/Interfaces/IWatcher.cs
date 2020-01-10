@@ -1,7 +1,10 @@
-﻿namespace ManageOrdersApp.Core.Interfaces
+﻿using System;
+
+namespace ManageOrdersApp.Core.Interfaces
 {
-    public interface IWatcher
+    public interface IWatcher:ILoggable
     {
+        event Action<string> Created;
         void Stop();
         void Start();
     }

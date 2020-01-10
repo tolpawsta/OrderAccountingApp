@@ -10,23 +10,18 @@ using System.Threading.Tasks;
 
 namespace ManagerOrdersApp.BLL.Impl
 {
-    class FileWatcher : IWatcher, ILoggable
+    class FileWatcher : IWatcher
     {
         private string _puthDirectory;
         private FileSystemWatcher _watcher;
-        private ICollection<ILogger> _loggers;
+        
         public event Action<string> LogEvent;
         public event Action<string> Created;
-        public FileWatcher() : this(ConfigurationManager.AppSettings.Get("PathFolder"))
-        {
-
-        }
-
         public FileWatcher(string puthDirectory)
         {
             _puthDirectory = puthDirectory;
             _watcher = new FileSystemWatcher();
-            _loggers = new HashSet<ILogger>();
+            
         }
 
 
@@ -38,7 +33,7 @@ namespace ManagerOrdersApp.BLL.Impl
                 _watcher = new FileSystemWatcher();
             }
             SubsribeOnEvents(_watcher);
-            _watcher.Path = _puthDirectory;
+            _watcher.Path = Path.GetFullPath(_puthDirectory);
             _watcher.Filter = "*.csv";
             _watcher.NotifyFilter = NotifyFilters.LastWrite |
            NotifyFilters.LastAccess |
@@ -66,7 +61,7 @@ namespace ManagerOrdersApp.BLL.Impl
             watcher.Changed += (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
             watcher.Deleted += (o, e) => LogEvent?.Invoke($"File: {e.Name} {e.ChangeType}");
             watcher.Renamed += (o, e) => LogEvent?.Invoke($"File: {e.OldName} renamed to {e.Name}");
-            watcher.Deleted += (o, e) => Created?.Invoke(e.FullPath);
+            watcher.Created += (o, e) => Created?.Invoke(e.FullPath);
         }
         private void UnsubscribeOnEvents(FileSystemWatcher watcher)
         {
