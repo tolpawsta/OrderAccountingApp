@@ -55,6 +55,10 @@
       <Project>{20c7d813-645f-454a-8394-95b262fc27c3}</Project>
       <Name>ManageOrdersApp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ManageOrdersApp.DAL\ManageOrdersApp.DAL.csproj">
+      <Project>{1fc3f9f0-1da8-4462-9cd0-82a20920985f}</Project>
+      <Name>ManageOrdersApp.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ManagerOrdersApp.BL\ManagerOrdersApp.BLL.csproj">
       <Project>{15c21c09-0177-40d4-a43b-1057a25445ea}</Project>
       <Name>ManagerOrdersApp.BLL</Name>

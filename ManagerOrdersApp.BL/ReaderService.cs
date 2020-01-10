@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using ManageOrdersApp.BLL.Models;
 using ManageOrdersApp.Core.Interfaces;
-using ManageOrdersApp.DAL.Entities;
-using ManageOrdersApp.DAL.Model;
-using ManageOrdersApp.EF;
+using ManageOrdersApp.Entities;
 using ManageOrdersApp.Repositories;
 using ManagerOrdersApp.BL.Impl;
 using ManagerOrdersApp.BLL.MappingProfile;
@@ -28,7 +26,7 @@ namespace ManagerOrdersApp.BLL
         {
             using (var reader =new StreamReader(pathFile))
             {
-                IService<ProductBL> productService = new ProductService(new Repository<Product>(new TestContext()),_mapper);
+                ProductService productService = new ProductService(new ProductRepository(new ManagerContext()),_mapper);
                 //IService<OrderBL> orderService = new ProductService(new Repository<Order>(new ManagerContext()),_mapper);
                 //IService<ManagerBL> managerService = new ProductService(new Repository<Manager>(new ManagerContext()),_mapper);
                 //IService<ReportBL> reportService = new ProductService(new Repository<Report>(new ManagerContext()),_mapper);
@@ -41,7 +39,9 @@ namespace ManagerOrdersApp.BLL
                 {
                     csvFileReader.GetObject(record);
                    ProductBL product=csvFileReader.GetProduct();
-                    productService.Create(product);
+                   
+                        productService.Create(product);
+                    
                 }
             }
             

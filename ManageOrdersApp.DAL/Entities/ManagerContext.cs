@@ -1,28 +1,33 @@
-namespace ManageOrdersApp.EF
+namespace ManageOrdersApp.Entities
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using ManageOrdersApp.Entities;
 
-    public partial class TestContext : DbContext
+    public partial class ManagerContext : DbContext
     {
-        public TestContext()
-            : base("name=ManagerContext")
+        public ManagerContext()
+            : base("ManagerContext")
         {
-            Database.CreateIfNotExists();
         }
 
         public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Report> Report { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
                 .HasMany(e => e.Order)
                 .WithRequired(e => e.Customer)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Manager>()
+                .HasMany(e => e.Report)
+                .WithRequired(e => e.Manager)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Order>()
@@ -32,6 +37,11 @@ namespace ManageOrdersApp.EF
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Order)
                 .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Report>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Report)
                 .WillCascadeOnDelete(false);
         }
     }

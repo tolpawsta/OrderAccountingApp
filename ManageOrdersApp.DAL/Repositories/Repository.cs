@@ -1,6 +1,5 @@
 ﻿using ManageOrdersApp.Core.Interfaces;
-using ManageOrdersApp.DAL.Model;
-using ManageOrdersApp.EF;
+using ManageOrdersApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,13 +9,14 @@ namespace ManageOrdersApp.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly TestContext _context;
+        private readonly ManagerContext _context;
         private DbSet<TEntity> _entities;
         private object _locker = new object();
 
-        public Repository(TestContext context)
+        public Repository(ManagerContext context)
         {
             _context = context;
+            _entities = _context.Set<TEntity>(); 
         }
 
         public IQueryable<TEntity> All => Entities;

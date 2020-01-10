@@ -7,11 +7,11 @@ namespace ManageOrdersApp.Core.Interfaces
     {
         
         IEnumerable<TSource> GetAll();
-        void Remove(TSource Entity);
+        void Remove(TSource entity);
        
-        void Update(TSource Entity);
-        void Create(TSource Entity);
-
+        void Update(TSource entity);
+        void Create(TSource entity);
+        bool Check(TSource entity);
         TSource GetById(int id);
         
         void SaveChange();

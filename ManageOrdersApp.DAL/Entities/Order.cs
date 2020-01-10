@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ManageOrdersApp.DAL.Entities
+namespace ManageOrdersApp.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Order")]
     public partial class Order
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
-        public DateTime DateTime { get; set; }
-        public int ReportId { get; set; }
-        public Report Report {get;set;}
+
+        [Column(TypeName = "datetime2")]
+        public DateTime OrderDate { get; set; }
+
         public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+
         public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
+
         public decimal Amount { get; set; }
 
-        public Order(int id, DateTime dateTime, Customer customer, Product product, decimal amount)
-        {
-            Id = id;
-            DateTime = dateTime;
-            Customer = customer;
-            Product = product;
-            Amount = amount;
-        }
+        public int ReportId { get; set; }
 
+        public virtual Customer Customer { get; set; }
+
+        public virtual Product Product { get; set; }
+
+        public virtual Report Report { get; set; }
     }
 }

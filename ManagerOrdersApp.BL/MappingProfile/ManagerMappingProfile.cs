@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ManageOrdersApp.BLL.Models;
-using ManageOrdersApp.DAL.Entities;
+using ManageOrdersApp.Entities;
 
 
 namespace ManagerOrdersApp.BLL.MappingProfile

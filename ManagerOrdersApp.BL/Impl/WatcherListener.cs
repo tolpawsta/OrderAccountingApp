@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ManagerOrdersApp.BL.Impl
 {
-    public class WatcherListener:IWatcherListener
+    public class WatcherListener : IWatcherListener
     {
         private IReaderService _readerService;
 
@@ -20,10 +20,11 @@ namespace ManagerOrdersApp.BL.Impl
         public void OnCreated(string pathFile)
         {
             Thread.Sleep(1000);
-            Task.Factory.StartNew(
+            /*Task.Factory.StartNew(
                 () => _readerService.Begin(pathFile)
                 );
-
+*/
+            _readerService.Begin(pathFile);
         }
     }
 }
